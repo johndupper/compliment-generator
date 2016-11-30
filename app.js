@@ -27,6 +27,16 @@ app.get('/', (req, res) => {
                   compliment: randomCompliment});
 });
 
+// render index content
+app.get('/:id', (req, res) => {
+  var name = req.params.id;
+  let randomCompliment = getRandomCompliments(compliments);
+  let randomColor = getRandomCompliments(colors);
+  res.render('name', {name: name,
+                      color: randomColor,
+                 compliment: randomCompliment});
+});
+
 
 // middleware
 app.use((req, res, next) => {
